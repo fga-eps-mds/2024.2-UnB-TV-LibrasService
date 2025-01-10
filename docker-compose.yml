@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: vlibras-service
+    ports:
+      - "8020:8020"
+    environment:
+      - ENV=production
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: vlibras-widget
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
