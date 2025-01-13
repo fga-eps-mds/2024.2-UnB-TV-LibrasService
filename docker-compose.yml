@@ -1,19 +1,11 @@
-version: "3.8"
+version: "3.9"
 services:
-  backend:
+  libras_service:
     build:
-      context: ./backend
-    container_name: vlibras-service
+      context: .
+      dockerfile: Dockerfile
+    container_name: libras_service
     ports:
       - "8020:8020"
     environment:
-      - ENV=production
-
-  frontend:
-    build:
-      context: ./frontend
-    container_name: vlibras-widget
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
+      - PYTHONUNBUFFERED=1
